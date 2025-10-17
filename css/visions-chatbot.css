@@ -684,6 +684,9 @@
   .justify-end {
     justify-content: flex-end;
   }
+  .justify-start {
+    justify-content: flex-start;
+  }
   .gap-0\.5 {
     gap: calc(var(--spacing) * 0.5);
   }
@@ -1303,6 +1306,9 @@
     .hover\:rounded-xl:hover {
       border-radius: calc(var(--radius) + 4px);
     }
+    .hover\:border-vui-primary:hover {
+      border-color: var(--vui-primary);
+    }
     .hover\:\!bg-neutral-100:hover {
       background-color: var(--color-neutral-100) !important;
     }
@@ -1376,6 +1382,9 @@
     }
     .hover\:text-blue-500:hover {
       color: var(--color-blue-500);
+    }
+    .hover\:text-vui-primary:hover {
+      color: var(--vui-primary);
     }
     .hover\:underline:hover {
       text-decoration-line: underline;
