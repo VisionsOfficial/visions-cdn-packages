@@ -40,6 +40,7 @@
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-outline-style: solid;
       --tw-duration: initial;
+      --tw-ease: initial;
       --tw-animation-delay: 0s;
       --tw-animation-direction: normal;
       --tw-animation-duration: initial;
@@ -81,12 +82,12 @@
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-gray-900: oklch(21% 0.034 264.665);
     --color-zinc-200: oklch(92% 0.004 286.32);
-    --color-zinc-400: oklch(70.5% 0.015 286.067);
     --color-neutral-50: oklch(98.5% 0 0);
     --color-neutral-100: oklch(97% 0 0);
     --color-neutral-200: oklch(92.2% 0 0);
     --color-neutral-300: oklch(87% 0 0);
     --color-neutral-500: oklch(55.6% 0 0);
+    --color-neutral-600: oklch(43.9% 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -113,6 +114,7 @@
     --leading-normal: 1.5;
     --leading-relaxed: 1.625;
     --radius-3xl: 1.5rem;
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-spin: spin 1s linear infinite;
     --animate-bounce: bounce 1s infinite;
     --default-transition-duration: 0.15s;
@@ -407,7 +409,12 @@
   .inset-0 {
     inset: calc(var(--spacing) * 0);
   }
-  .top-1\/2,
+  .top-1\/2 {
+    top: 50%;
+  }
+  .top-3\.5 {
+    top: calc(var(--spacing) * 3.5);
+  }
   .top-\[50\%\] {
     top: 50%;
   }
@@ -426,11 +433,20 @@
   .left-2 {
     left: calc(var(--spacing) * 2);
   }
+  .left-6 {
+    left: calc(var(--spacing) * 6);
+  }
   .left-\[50\%\] {
     left: 50%;
   }
+  .z-10 {
+    z-index: 10;
+  }
   .z-50 {
     z-index: 50;
+  }
+  .z-60 {
+    z-index: 60;
   }
   .-mx-1 {
     margin-inline: calc(var(--spacing) * -1);
@@ -675,6 +691,9 @@
   .list-disc {
     list-style-type: disc;
   }
+  .grid-cols-\[repeat\(auto-fit\,minmax\(200px\,1fr\)\)\] {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -727,6 +746,15 @@
     );
     margin-block-end: calc(
       calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse))
+    );
+  }
+  :where(.space-y-2 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(
+      calc(var(--spacing) * 2) * var(--tw-space-y-reverse)
+    );
+    margin-block-end: calc(
+      calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse))
     );
   }
   :where(.space-y-4 > :not(:last-child)) {
@@ -888,6 +916,7 @@
   .bg-transparent {
     background-color: #0000;
   }
+  .bg-vui-primary,
   .bg-vui-primary\/10 {
     background-color: var(--vui-primary);
   }
@@ -912,6 +941,9 @@
       );
     }
   }
+  .bg-vui-secondary {
+    background-color: var(--vui-secondary);
+  }
   .bg-white {
     background-color: var(--color-white);
   }
@@ -924,6 +956,26 @@
   }
   .from-vui-primary {
     --tw-gradient-from: var(--vui-primary);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+  .from-vui-primary\/0 {
+    --tw-gradient-from: var(--vui-primary);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .from-vui-primary\/0 {
+      --tw-gradient-from: color-mix(
+        in oklab,
+        var(--vui-primary) 0%,
+        transparent
+      );
+    }
+  }
+  .from-vui-primary\/0 {
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -956,6 +1008,22 @@
   }
   .to-vui-accent {
     --tw-gradient-to: var(--vui-accent);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+  .to-vui-accent\/0 {
+    --tw-gradient-to: var(--vui-accent);
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .to-vui-accent\/0 {
+      --tw-gradient-to: color-mix(in oklab, var(--vui-accent) 0%, transparent);
+    }
+  }
+  .to-vui-accent\/0 {
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -1029,6 +1097,9 @@
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
   }
   .pr-0\.5 {
     padding-right: calc(var(--spacing) * 0.5);
@@ -1157,6 +1228,9 @@
   .text-neutral-500 {
     color: var(--color-neutral-500);
   }
+  .text-neutral-600 {
+    color: var(--color-neutral-600);
+  }
   .text-popover-foreground {
     color: var(--popover-foreground);
   }
@@ -1177,9 +1251,6 @@
   }
   .text-white {
     color: var(--color-white);
-  }
-  .text-zinc-400 {
-    color: var(--color-zinc-400);
   }
   .capitalize {
     text-transform: capitalize;
@@ -1260,6 +1331,16 @@
     );
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via,
+      --tw-gradient-to;
+    transition-timing-function: var(
+      --tw-ease,
+      var(--default-transition-timing-function)
+    );
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-opacity {
     transition-property: opacity;
     transition-timing-function: var(
@@ -1278,9 +1359,17 @@
     --tw-duration: 0.2s;
     transition-duration: 0.2s;
   }
+  .duration-300 {
+    --tw-duration: 0.3s;
+    transition-duration: 0.3s;
+  }
   .duration-500 {
     --tw-duration: 0.5s;
     transition-duration: 0.5s;
+  }
+  .ease-in-out {
+    --tw-ease: var(--ease-in-out);
+    transition-timing-function: var(--ease-in-out);
   }
   .delay-75 {
     --tw-animation-delay: 75ms;
@@ -1307,6 +1396,48 @@
   }
   .zoom-in-95 {
     --tw-enter-scale: 0.95;
+  }
+  @media (hover: hover) {
+    .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
+      --tw-gradient-from: var(--vui-primary);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
+        --tw-gradient-from: color-mix(
+          in oklab,
+          var(--vui-primary) 20%,
+          transparent
+        );
+      }
+    }
+    .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
+      --tw-gradient-stops: var(
+        --tw-gradient-via-stops,
+        var(--tw-gradient-position),
+        var(--tw-gradient-from) var(--tw-gradient-from-position),
+        var(--tw-gradient-to) var(--tw-gradient-to-position)
+      );
+    }
+    .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
+      --tw-gradient-to: var(--vui-accent);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
+        --tw-gradient-to: color-mix(
+          in oklab,
+          var(--vui-accent) 20%,
+          transparent
+        );
+      }
+    }
+    .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
+      --tw-gradient-stops: var(
+        --tw-gradient-via-stops,
+        var(--tw-gradient-position),
+        var(--tw-gradient-from) var(--tw-gradient-from-position),
+        var(--tw-gradient-to) var(--tw-gradient-to-position)
+      );
+    }
   }
   .group-data-\[disabled\=true\]\:pointer-events-none:is(
       :where(.group)[data-disabled="true"] *
@@ -1467,6 +1598,30 @@
         );
       }
     }
+    .hover\:bg-vui-primary\/80:hover {
+      background-color: var(--vui-primary);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-vui-primary\/80:hover {
+        background-color: color-mix(
+          in oklab,
+          var(--vui-primary) 80%,
+          transparent
+        );
+      }
+    }
+    .hover\:bg-vui-secondary\/90:hover {
+      background-color: var(--vui-secondary);
+    }
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-vui-secondary\/90:hover {
+        background-color: color-mix(
+          in oklab,
+          var(--vui-secondary) 90%,
+          transparent
+        );
+      }
+    }
     .hover\:\!text-red-700:hover {
       color: var(--color-red-700) !important;
     }
@@ -1484,6 +1639,12 @@
     }
     .hover\:underline:hover {
       text-decoration-line: underline;
+    }
+    .hover\:shadow-sm:hover {
+      --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a),
+        0 1px 2px -1px var(--tw-shadow-color, #0000001a);
+      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+        var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
     .hover\:shadow-xs:hover {
       --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, #0000000d);
@@ -1979,6 +2140,8 @@
   --vui-primary: oklch(70% 0.1 194);
   --vui-primary-foreground: oklch(98.5% 0 0);
   --secondary: oklch(97% 0 0);
+  --vui-secondary: oklch(26.35% 0.054 263.65);
+  --vui-secondary-foreground: oklch(48.88% 0.0346 257.79);
   --secondary-foreground: oklch(20.5% 0 0);
   --muted: oklch(97% 0 0);
   --muted-foreground: oklch(55.6% 0 0);
@@ -2199,6 +2362,10 @@ body {
   initial-value: solid;
 }
 @property --tw-duration {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ease {
   syntax: "*";
   inherits: false;
 }
