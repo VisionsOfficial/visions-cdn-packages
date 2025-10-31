@@ -73,8 +73,14 @@
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-green-300: oklch(87.1% 0.15 154.449);
-    --color-blue-50: oklch(97% 0.014 254.604);
-    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-teal-50: oklch(98.4% 0.014 180.72);
+    --color-teal-100: oklch(95.3% 0.051 180.801);
+    --color-teal-200: oklch(91% 0.096 180.426);
+    --color-teal-400: oklch(77.7% 0.152 181.912);
+    --color-teal-500: oklch(70.4% 0.14 182.503);
+    --color-teal-600: oklch(60% 0.118 184.704);
+    --color-teal-700: oklch(51.1% 0.096 186.391);
+    --color-violet-600: oklch(54.1% 0.281 293.009);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-600: oklch(44.6% 0.03 256.802);
@@ -387,6 +393,57 @@
   body {
     background-color: var(--background);
     color: var(--foreground);
+  }
+  .bg-ia {
+    --tw-gradient-position: to bottom right;
+  }
+  @supports (background-image: linear-gradient(in lab, red, red)) {
+    .bg-ia {
+      --tw-gradient-position: to bottom right in oklab;
+    }
+  }
+  .bg-ia {
+    background-image: linear-gradient(var(--tw-gradient-stops));
+    --tw-gradient-from: var(--color-teal-400);
+    --tw-gradient-to: var(--color-violet-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+  .bg-user-message {
+    --tw-gradient-position: to bottom right;
+  }
+  @supports (background-image: linear-gradient(in lab, red, red)) {
+    .bg-user-message {
+      --tw-gradient-position: to bottom right in oklab;
+    }
+  }
+  .bg-user-message {
+    background-image: linear-gradient(var(--tw-gradient-stops));
+    --tw-gradient-from: color-mix(
+      in oklab,
+      var(--color-teal-200) 60%,
+      transparent
+    );
+    --tw-gradient-via: color-mix(
+      in oklab,
+      var(--color-teal-100) 80%,
+      transparent
+    );
+    --tw-gradient-via-stops: var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-via) var(--tw-gradient-via-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+    --tw-gradient-to: var(--color-teal-50);
   }
 }
 @layer components;
@@ -844,11 +901,11 @@
   .border-neutral-300 {
     border-color: var(--color-neutral-300);
   }
+  .border-teal-700 {
+    border-color: var(--color-teal-700);
+  }
   .border-transparent {
     border-color: #0000;
-  }
-  .border-vui-primary {
-    border-color: var(--vui-primary);
   }
   .bg-background {
     background-color: var(--background);
@@ -867,9 +924,6 @@
         transparent
       );
     }
-  }
-  .bg-blue-50 {
-    background-color: var(--color-blue-50);
   }
   .bg-border {
     background-color: var(--border);
@@ -913,36 +967,14 @@
   .bg-secondary {
     background-color: var(--secondary);
   }
+  .bg-teal-50 {
+    background-color: var(--color-teal-50);
+  }
+  .bg-teal-700 {
+    background-color: var(--color-teal-700);
+  }
   .bg-transparent {
     background-color: #0000;
-  }
-  .bg-vui-primary,
-  .bg-vui-primary\/10 {
-    background-color: var(--vui-primary);
-  }
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-vui-primary\/10 {
-      background-color: color-mix(
-        in oklab,
-        var(--vui-primary) 10%,
-        transparent
-      );
-    }
-  }
-  .bg-vui-primary\/15 {
-    background-color: var(--vui-primary);
-  }
-  @supports (color: color-mix(in lab, red, red)) {
-    .bg-vui-primary\/15 {
-      background-color: color-mix(
-        in oklab,
-        var(--vui-primary) 15%,
-        transparent
-      );
-    }
-  }
-  .bg-vui-secondary {
-    background-color: var(--vui-secondary);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -954,28 +986,19 @@
     --tw-gradient-position: to bottom right in oklab;
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
-  .from-vui-primary {
-    --tw-gradient-from: var(--vui-primary);
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
-      var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
-  }
-  .from-vui-primary\/0 {
-    --tw-gradient-from: var(--vui-primary);
+  .from-teal-200\/0 {
+    --tw-gradient-from: #0000;
   }
   @supports (color: color-mix(in lab, red, red)) {
-    .from-vui-primary\/0 {
+    .from-teal-200\/0 {
       --tw-gradient-from: color-mix(
         in oklab,
-        var(--vui-primary) 0%,
+        var(--color-teal-200) 0%,
         transparent
       );
     }
   }
-  .from-vui-primary\/0 {
+  .from-teal-200\/0 {
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -983,63 +1006,38 @@
       var(--tw-gradient-to) var(--tw-gradient-to-position)
     );
   }
-  .from-vui-primary\/20 {
-    --tw-gradient-from: var(--vui-primary);
+  .via-teal-100\/0 {
+    --tw-gradient-via: #0000;
   }
   @supports (color: color-mix(in lab, red, red)) {
-    .from-vui-primary\/20 {
-      --tw-gradient-from: color-mix(
+    .via-teal-100\/0 {
+      --tw-gradient-via: color-mix(
         in oklab,
-        var(--vui-primary) 20%,
+        var(--color-teal-100) 0%,
         transparent
       );
     }
   }
-  .from-vui-primary\/20 {
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
+  .via-teal-100\/0 {
+    --tw-gradient-via-stops: var(--tw-gradient-position),
       var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
+      var(--tw-gradient-via) var(--tw-gradient-via-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
   }
-  .from-30\% {
-    --tw-gradient-from-position: 30%;
-  }
-  .to-vui-accent {
-    --tw-gradient-to: var(--vui-accent);
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
-      var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
-  }
-  .to-vui-accent\/0 {
-    --tw-gradient-to: var(--vui-accent);
+  .to-teal-50\/0 {
+    --tw-gradient-to: #0000;
   }
   @supports (color: color-mix(in lab, red, red)) {
-    .to-vui-accent\/0 {
-      --tw-gradient-to: color-mix(in oklab, var(--vui-accent) 0%, transparent);
+    .to-teal-50\/0 {
+      --tw-gradient-to: color-mix(
+        in oklab,
+        var(--color-teal-50) 0%,
+        transparent
+      );
     }
   }
-  .to-vui-accent\/0 {
-    --tw-gradient-stops: var(
-      --tw-gradient-via-stops,
-      var(--tw-gradient-position),
-      var(--tw-gradient-from) var(--tw-gradient-from-position),
-      var(--tw-gradient-to) var(--tw-gradient-to-position)
-    );
-  }
-  .to-vui-accent\/20 {
-    --tw-gradient-to: var(--vui-accent);
-  }
-  @supports (color: color-mix(in lab, red, red)) {
-    .to-vui-accent\/20 {
-      --tw-gradient-to: color-mix(in oklab, var(--vui-accent) 20%, transparent);
-    }
-  }
-  .to-vui-accent\/20 {
+  .to-teal-50\/0 {
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -1246,8 +1244,11 @@
   .text-secondary-foreground {
     color: var(--secondary-foreground);
   }
-  .text-vui-primary {
-    color: var(--vui-primary);
+  .text-teal-600 {
+    color: var(--color-teal-600);
+  }
+  .text-teal-700 {
+    color: var(--color-teal-700);
   }
   .text-white {
     color: var(--color-white);
@@ -1298,8 +1299,8 @@
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
       var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .ring-vui-primary {
-    --tw-ring-color: var(--vui-primary);
+  .ring-teal-700 {
+    --tw-ring-color: var(--color-teal-700);
   }
   .outline-hidden {
     --tw-outline-style: none;
@@ -1398,19 +1399,19 @@
     --tw-enter-scale: 0.95;
   }
   @media (hover: hover) {
-    .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
-      --tw-gradient-from: var(--vui-primary);
+    .group-hover\:from-teal-200\/60:is(:where(.group):hover *) {
+      --tw-gradient-from: #96f7e499;
     }
     @supports (color: color-mix(in lab, red, red)) {
-      .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
+      .group-hover\:from-teal-200\/60:is(:where(.group):hover *) {
         --tw-gradient-from: color-mix(
           in oklab,
-          var(--vui-primary) 20%,
+          var(--color-teal-200) 60%,
           transparent
         );
       }
     }
-    .group-hover\:from-vui-primary\/20:is(:where(.group):hover *) {
+    .group-hover\:from-teal-200\/60:is(:where(.group):hover *) {
       --tw-gradient-stops: var(
         --tw-gradient-via-stops,
         var(--tw-gradient-position),
@@ -1418,19 +1419,27 @@
         var(--tw-gradient-to) var(--tw-gradient-to-position)
       );
     }
-    .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
-      --tw-gradient-to: var(--vui-accent);
+    .group-hover\:via-teal-100\/80:is(:where(.group):hover *) {
+      --tw-gradient-via: #cbfbf1cc;
     }
     @supports (color: color-mix(in lab, red, red)) {
-      .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
-        --tw-gradient-to: color-mix(
+      .group-hover\:via-teal-100\/80:is(:where(.group):hover *) {
+        --tw-gradient-via: color-mix(
           in oklab,
-          var(--vui-accent) 20%,
+          var(--color-teal-100) 80%,
           transparent
         );
       }
     }
-    .group-hover\:to-vui-accent\/20:is(:where(.group):hover *) {
+    .group-hover\:via-teal-100\/80:is(:where(.group):hover *) {
+      --tw-gradient-via-stops: var(--tw-gradient-position),
+        var(--tw-gradient-from) var(--tw-gradient-from-position),
+        var(--tw-gradient-via) var(--tw-gradient-via-position),
+        var(--tw-gradient-to) var(--tw-gradient-to-position);
+      --tw-gradient-stops: var(--tw-gradient-via-stops);
+    }
+    .group-hover\:to-teal-50:is(:where(.group):hover *) {
+      --tw-gradient-to: var(--color-teal-50);
       --tw-gradient-stops: var(
         --tw-gradient-via-stops,
         var(--tw-gradient-position),
@@ -1515,12 +1524,12 @@
   .placeholder\:text-muted-foreground::placeholder {
     color: var(--muted-foreground);
   }
-  .placeholder\:text-vui-primary\/70::placeholder {
-    color: var(--vui-primary);
+  .placeholder\:text-teal-700\/60::placeholder {
+    color: #00776e99;
   }
   @supports (color: color-mix(in lab, red, red)) {
-    .placeholder\:text-vui-primary\/70::placeholder {
-      color: color-mix(in oklab, var(--vui-primary) 70%, transparent);
+    .placeholder\:text-teal-700\/60::placeholder {
+      color: color-mix(in oklab, var(--color-teal-700) 60%, transparent);
     }
   }
   .focus-within\:ring-2:focus-within {
@@ -1533,8 +1542,8 @@
     .hover\:rounded-xl:hover {
       border-radius: calc(var(--radius) + 4px);
     }
-    .hover\:border-vui-primary:hover {
-      border-color: var(--vui-primary);
+    .hover\:border-teal-700:hover {
+      border-color: var(--color-teal-700);
     }
     .hover\:\!bg-neutral-100:hover {
       background-color: var(--color-neutral-100) !important;
@@ -1542,17 +1551,8 @@
     .hover\:\!bg-red-100:hover {
       background-color: var(--color-red-100) !important;
     }
-    .hover\:\!bg-vui-primary\/10:hover {
-      background-color: var(--vui-primary) !important;
-    }
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:\!bg-vui-primary\/10:hover {
-        background-color: color-mix(
-          in oklab,
-          var(--vui-primary) 10%,
-          transparent
-        ) !important;
-      }
+    .hover\:\!bg-teal-50:hover {
+      background-color: var(--color-teal-50) !important;
     }
     .hover\:bg-accent:hover {
       background-color: var(--accent);
@@ -1598,47 +1598,29 @@
         );
       }
     }
-    .hover\:bg-vui-primary\/80:hover {
-      background-color: var(--vui-primary);
-    }
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:bg-vui-primary\/80:hover {
-        background-color: color-mix(
-          in oklab,
-          var(--vui-primary) 80%,
-          transparent
-        );
-      }
-    }
-    .hover\:bg-vui-secondary\/90:hover {
-      background-color: var(--vui-secondary);
-    }
-    @supports (color: color-mix(in lab, red, red)) {
-      .hover\:bg-vui-secondary\/90:hover {
-        background-color: color-mix(
-          in oklab,
-          var(--vui-secondary) 90%,
-          transparent
-        );
-      }
+    .hover\:bg-teal-600:hover {
+      background-color: var(--color-teal-600);
     }
     .hover\:\!text-red-700:hover {
       color: var(--color-red-700) !important;
     }
-    .hover\:\!text-vui-primary:hover {
-      color: var(--vui-primary) !important;
+    .hover\:\!text-teal-700:hover {
+      color: var(--color-teal-700) !important;
     }
     .hover\:text-accent-foreground:hover {
       color: var(--accent-foreground);
     }
-    .hover\:text-blue-500:hover {
-      color: var(--color-blue-500);
+    .hover\:text-teal-500:hover {
+      color: var(--color-teal-500);
     }
-    .hover\:text-vui-primary:hover {
-      color: var(--vui-primary);
+    .hover\:text-teal-700:hover {
+      color: var(--color-teal-700);
     }
     .hover\:underline:hover {
       text-decoration-line: underline;
+    }
+    .hover\:opacity-90:hover {
+      opacity: 0.9;
     }
     .hover\:shadow-sm:hover {
       --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a),
@@ -2137,16 +2119,11 @@
   --popover-foreground: oklch(14.5% 0 0);
   --primary: oklch(20.5% 0 0);
   --primary-foreground: oklch(98.5% 0 0);
-  --vui-primary: oklch(70% 0.1 194);
-  --vui-primary-foreground: oklch(98.5% 0 0);
   --secondary: oklch(97% 0 0);
-  --vui-secondary: oklch(26.35% 0.054 263.65);
-  --vui-secondary-foreground: oklch(48.88% 0.0346 257.79);
   --secondary-foreground: oklch(20.5% 0 0);
   --muted: oklch(97% 0 0);
   --muted-foreground: oklch(55.6% 0 0);
   --accent: oklch(97% 0 0);
-  --vui-accent: oklch(88.33% 0.1963 160.89);
   --accent-foreground: oklch(20.5% 0 0);
   --destructive: oklch(57.7% 0.245 27.325);
   --border: oklch(92.2% 0 0);
